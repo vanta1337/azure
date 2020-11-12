@@ -22,10 +22,14 @@ You can also:
 ### Installation
 
 Azure requires Python 3+ to run.
-
+1.
 ```sh
 $ python -3 server.py
 ```
+2.
+- Change the port and host in azure-client.pyw
+- Change port in azure-server.py
+
 ### Todos
 
  - Add more features
