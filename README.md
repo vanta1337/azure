@@ -11,10 +11,12 @@ Azure is a Windows reverse shell and an updated version of Turtle by Bucky Rober
   - Reverse shell
   - Updated commands and better look
   - Pyw extension for no console window on client
+  - Windows and Linux support for the server
+  - Easy to use
 
 
 You can also:
-  - Modify the server to run on a vps 24/7
+  - Run the server on a vps 24/7
   - Download and execute files via curl and anonfiles
   - Use pyinstaller to convert the pyw to an exe
 
