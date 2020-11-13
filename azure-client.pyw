@@ -10,7 +10,7 @@ import shutil
 class Client(object):
 
     def __init__(self):
-        self.serverHost = 'vantaxyz.ddns.net'
+        self.serverHost = 'ENTER_HOST'
         self.serverPort = 1337
         self.socket = None
 
