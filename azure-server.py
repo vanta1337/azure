@@ -22,6 +22,7 @@ COMMANDS = {'\nhelp':['Shows this help'],
             'info':['Shows credits'],
             'shell':['Starts reverse shell on client. Usage: shell [id]'],
             'quit':['Stops current connection with a client. To be used when client is selected'],
+            'remove':['Deinstalls client. To be used when client is selected'],
             'kill':['Kills the server\n'],
            }
 

