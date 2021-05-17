@@ -26,8 +26,8 @@ COMMANDS = {'\nhelp':['Shows this help'],
 class MultiServer(object):
 
     def __init__(self):
-        self.host = ''
-        self.port = ENTER_PORT
+        self.host = 'CHANGE_ME'
+        self.port = CHANGE_ME
         self.socket = None
         self.all_connections = []
         self.all_addresses = []

