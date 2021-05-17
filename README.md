@@ -35,6 +35,9 @@ $ python3 server.py
 #### 2.
 - Change the port and host in azure-client.pyw
 - Change port in azure-server-win/linux.py
+- Change port and host in payload.txt
+- Encode payload.txt as hex
+- Paste payload.txt as hex in azure-client.pyw as given
 
 ### Todos
 
