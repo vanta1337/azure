@@ -103,8 +103,8 @@ class Client(object):
 
 #CHANGE_THIS
 #Payload in payload.txt
-#Payload as hex: "\x9f\x23\" etc 
-#payload = str.encode("HERE")
+#Payload as hex: "\x9f\x23\" in str 
+str = "HERE"
 payload = str.encode("")
 
 def main():
